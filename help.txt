@@ -1,0 +1,48 @@
+// Prerequisites
+Ensure Python and Pip are installed.  
+Check in CMD: python --version
+              pip --version
+Memory required: ~15GB and Recommened RAM: 16GB 
+
+// Install Dependencies
+Run the following command to install all necessary packages:
+    pip install fastapi uvicorn transformers torch datasets
+// Save Code
+Save the following Python scripts in the same directory:
+    - app.py
+    - training_ai.py
+    - initializeDB.py
+    - process_images.py
+
+//Other files and folders needed
+Save all the images in folder ALL_IMAGES for ai to process
+Save the contact in contacts.txt to allow ai to know people she is texting. 
+Save the Qna file in same directory "Alexandra Questions.txt"
+
+// Set Up Database and Train AI
+1 Initialize the database:
+    python initializeDB.py
+2 Process images (stores categorized images in DB)
+    python process_images.py
+3 Train the AI:
+    python training_ai.py
+
+// Run the App
+Navigate to the directory where `app.py` is located and run:
+    uvicorn app:app --reload
+
+The app will start at:  
+    http://127.0.0.1:8000/chat
+
+// Open Postman for Testing
+- Set URL: `http://127.0.0.1:8000/chat`
+- Select: **POST**  
+- Go to **Body -> Raw -> JSON**  
+- Enter the following:
+```json
+{
+    "message": "Hey, send me something cute!"
+}
+
+//Notes
+Right now the code expects all images to be in the same directory as the code under folder ALL_IMAGES, if you want to process images per phase that can be done as well. 
